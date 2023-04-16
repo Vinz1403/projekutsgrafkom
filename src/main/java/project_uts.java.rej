@@ -1,0 +1,85 @@
+diff a/src/main/java/project_uts.java b/src/main/java/project_uts.java	(rejected hunks)
+@@ -190,13 +190,12 @@
+         Vector3f mulut = new Vector3f(objects.get(0).getChildObject().get(2).model.transformPosition(new Vector3f(0.0f,0.0f,0.0f)));
+         objects.get(0).getChildObject().get(2).translateObject(-mulut.x, -mulut.y, -mulut.z);
+         objects.get(0).getChildObject().get(2).rotateObject((float)Math.toRadians(90f),-0.0f, -1.0f, 0.0f);
+-        objects.get(0).getChildObject().get(2).translateObject(mulut.x,mulut.y, mulut.z);
+-        objects.get(0).getChildObject().get(2).translateObject(-mulut.x, -mulut.y, -mulut.z);
+         objects.get(0).getChildObject().get(2).rotateObject((float)Math.toRadians(100f),1.0f, -0.0f, 0.0f);
+         objects.get(0).getChildObject().get(2).translateObject(mulut.x,mulut.y, mulut.z);
++
+ //        end mulut
+ 
+-//        tail #0#3
++//        main tail #0#3
+         objects.get(0).getChildObject().add(new ElipticParaboloid(
+                 Arrays.asList(
+                         new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+@@ -211,15 +210,63 @@
+ //                rad
+                 new Vector3f(0.1f, 0.1f, 0.1f)
+         ));
+-        objects.get(0).getChildObject().get(3).scaleObject(0.4f,0.25f,0.6f);
+-        objects.get(0).getChildObject().get(3).translateObject(0.0f, -0.2f, -0.15f);
+-
++        objects.get(0).getChildObject().get(3).scaleObject(1.8f,0.8f,1.5f);
++        objects.get(0).getChildObject().get(3).translateObject(0.0f, -0.15f, -0.115f);
++        Vector3f tail0 = new Vector3f(objects.get(0).getChildObject().get(3).model.transformPosition(new Vector3f(0.0f,0.0f,0.0f)));
++        objects.get(0).getChildObject().get(3).translateObject(-tail0.x, -tail0.y, -tail0.z);
++        objects.get(0).getChildObject().get(3).rotateObject((float)Math.toRadians(180f),-0.5f, 0.0f, 0.0f);
++        objects.get(0).getChildObject().get(3).rotateObject((float)Math.toRadians(30f),0.3f, 0.0f, 0.0f);
++        objects.get(0).getChildObject().get(3).translateObject(tail0.x,tail0.y, tail0.z);
++//        child tail 1 #0#3#0
++        objects.get(0).getChildObject().get(3).getChildObject().add(new ElipticParaboloid(
++                Arrays.asList(
++                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
++                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
++                ), new ArrayList<>(
++                List.of()
++        ),
++//                color
++                new Vector4f(0.0f, 1.0f, 0.0f, 1.0f),
++//                center
++                new Vector3f(0.0f, 0.0f, 0.0f),
++//                rad
++                new Vector3f(0.1f, 0.1f, 0.1f)
++        ));
++        objects.get(0).getChildObject().get(3).getChildObject().get(0).scaleObject(1.8f,0.8f,1.5f);
++        objects.get(0).getChildObject().get(3).getChildObject().get(0).translateObject(0.0f, -0.136f, -0.18f);
++        Vector3f tail2 = new Vector3f(objects.get(0).getChildObject().get(3).getChildObject().get(0).model.transformPosition(new Vector3f(0.0f,0.0f,0.0f)));
++        objects.get(0).getChildObject().get(3).getChildObject().get(0).translateObject(-tail2.x, -tail2.y, -tail2.z);
++        objects.get(0).getChildObject().get(3).getChildObject().get(0).rotateObject((float)Math.toRadians(180f),-0.5f, 0.0f, 0.0f);
++        objects.get(0).getChildObject().get(3).getChildObject().get(0).rotateObject((float)Math.toRadians(50f),0.5f, 0.0f, 0.0f);
++        objects.get(0).getChildObject().get(3).getChildObject().get(0).translateObject(tail2.x,tail2.y, tail2.z);
++//        child tail 1 #0#3#1
++        objects.get(0).getChildObject().get(3).getChildObject().add(new completeEP(
++                Arrays.asList(
++                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
++                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
++                ), new ArrayList<>(
++                List.of()
++        ),
++//                color
++                new Vector4f(0.0f, 1.0f, 0.0f, 1.0f),
++//                center
++                new Vector3f(0.0f, 0.0f, 0.0f),
++//                rad
++                new Vector3f(0.1f, 0.1f, 0.1f)
++        ));
++        objects.get(0).getChildObject().get(3).getChildObject().get(1).scaleObject(1.5f,0.6f,1.5f);
++        objects.get(0).getChildObject().get(3).getChildObject().get(1).translateObject(0.0f, -0.115f, -0.23f);
++        Vector3f tail3 = new Vector3f(objects.get(0).getChildObject().get(3).getChildObject().get(1).model.transformPosition(new Vector3f(0.0f,0.0f,0.0f)));
++        objects.get(0).getChildObject().get(3).getChildObject().get(1).translateObject(-tail3.x, -tail3.y, -tail3.z);
++        objects.get(0).getChildObject().get(3).getChildObject().get(1).rotateObject((float)Math.toRadians(180f),-0.5f, 0.0f, 0.0f);
++        objects.get(0).getChildObject().get(3).getChildObject().get(1).rotateObject((float)Math.toRadians(60f),0.5f, 0.0f, 0.3f);
++        objects.get(0).getChildObject().get(3).getChildObject().get(1).translateObject(tail3.x,tail3.y, tail3.z);
+ 
+ //        end tail
+ 
+     }
+ 
+-
++//masukin class bezier
+ //  func to curve
+     public void curveLine(Object object2d, Object newObjects){
+         float x,y;

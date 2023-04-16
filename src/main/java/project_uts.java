@@ -20,6 +20,7 @@ public class project_uts {
     private Window window = new Window(800,800,"Hello World");
     ArrayList<Object> objects = new ArrayList<>();
     ArrayList<Object> dummy = new ArrayList<>();
+    ArrayList<Object> bomber = new ArrayList<>();
 
     Camera camera = new Camera();
     Projection projection = new Projection(window.getWidth(), window.getHeight());
@@ -558,6 +559,318 @@ public class project_uts {
         objects.get(0).getChildObject().get(5).getChildObject().get(1).translateObject(lh2.x,lh2.y, lh2.z);
 //        end left hand
 
+        objects.get(0).translateObject(1.0f,0.0f,0.0f);
+    }
+
+    public void bomb(){
+        //bomber
+        bomber.add(new Sphere(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ), new ArrayList<>(
+                List.of(
+                )
+        ),
+//                color
+                new Vector4f(0.0f, 0.0f, 0.0f, 1.0f),
+//                center
+                new Vector3f(0.0f, 0.0f, 0.0f),
+//                rad
+                new Vector3f(0.1f, 0.1f, 0.1f)
+        ));
+
+
+        bomber.get(0).scaleObject(0.5f,0.5f,0.5f);
+////        child
+//        matakanan #0#0
+        bomber.get(0).getChildObject().add(new Sphere(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ), new ArrayList<>(
+                List.of()
+        ),
+//                color
+                new Vector4f(0.6f, 0.6f, 0.6f, 1.0f),
+//                center
+                new Vector3f(0.0f, 0.0f, 0.0f),
+//                rad
+                new Vector3f(0.1f, 0.1f, 0.1f)
+        ));
+
+        bomber.get(0).getChildObject().get(0).scaleObject(0.04f,0.08f,0.03f);
+        bomber.get(0).getChildObject().get(0).translateObject(0.08f, 0.05f, 0.23f);
+        Vector3f mataKanan = new Vector3f(bomber.get(0).getChildObject().get(0).model.transformPosition(new Vector3f(0.0f,0.0f,0.0f)));
+        bomber.get(0).getChildObject().get(0).translateObject(-mataKanan.x, -mataKanan.y, -mataKanan.z);
+        bomber.get(0).getChildObject().get(0).rotateObject((float)Math.toRadians(30f),-0.5f, 0.0f, 0.0f);
+        bomber.get(0).getChildObject().get(0).translateObject(mataKanan.x,mataKanan.y, mataKanan.z);
+////        end matakiri
+//        mata kiri bomber #0#1
+        bomber.get(0).getChildObject().add(new Sphere(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ), new ArrayList<>(
+                List.of()
+        ),
+//                color
+                new Vector4f(0.6f, 0.6f, 0.6f, 1.0f),
+//                center
+                new Vector3f(0.0f, 0.0f, 0.0f),
+//                rad
+                new Vector3f(0.1f, 0.1f, 0.1f)
+
+        ));
+
+        bomber.get(0).getChildObject().get(1).scaleObject(0.04f,0.08f,0.03f);
+        bomber.get(0).getChildObject().get(1).translateObject(-0.08f, 0.05f, 0.23f);
+        Vector3f mataKiri = new Vector3f(bomber.get(0).getChildObject().get(1).model.transformPosition(new Vector3f(0.0f,0.0f,0.0f)));
+        bomber.get(0).getChildObject().get(1).translateObject(-mataKiri.x, -mataKiri.y, -mataKiri.z);
+        bomber.get(0).getChildObject().get(1).rotateObject((float)Math.toRadians(30f),-0.5f, 0.0f, 0.0f);
+        bomber.get(0).getChildObject().get(1).translateObject(mataKiri.x,mataKiri.y, mataKiri.z);
+
+
+        bomber.get(0).getChildObject().get(0).getChildObject().add(new Cylinder(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ), new ArrayList<>(
+                List.of()
+        ),
+                new Vector4f(0.7529f, 0.7529f, 0.7529f, 1.0f),
+//                center
+                new Vector3f(0.0f, 0.0f, 0.0f),
+//                rad
+                new Vector3f(0.1f, 0.1f, 0.1f),
+                0.05f
+        ));
+
+        bomber.get(0).getChildObject().get(0).getChildObject().get(0).scaleObject(1.0f, 1.0f, 1.0f);
+        bomber.get(0).getChildObject().get(0).getChildObject().get(0).rotateObject((float)Math.toRadians(90.0f), 1.0f, 0.0f, 0.0f);
+        bomber.get(0).getChildObject().get(0).getChildObject().get(0).translateObject(0.0f, 0.22f, 0.0f);
+
+
+
+
+
+        //clinder atas buat korek api
+        bomber.get(0).getChildObject().get(0).getChildObject().add(new Cylinder(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ), new ArrayList<>(
+                List.of()
+        ),
+                new Vector4f(0.855f, 0.647f, 0.125f, 1.0f),
+//                center
+                new Vector3f(0.0f, 0.0f, 0.0f),
+//                rad
+                new Vector3f(0.025f, 0.025f, 0.025f),
+                0.125f
+        ));
+
+        bomber.get(0).getChildObject().get(0).getChildObject().get(1).scaleObject(1.0f, 1.0f, 1.0f);
+        bomber.get(0).getChildObject().get(0).getChildObject().get(1).rotateObject((float)Math.toRadians(90.0f), 1.0f, 0.0f, 0.0f);
+        bomber.get(0).getChildObject().get(0).getChildObject().get(1).translateObject(0.0f, 0.22f, 0.0f);
+
+        //kaki kiri
+        bomber.get(0).getChildObject().get(0).getChildObject().add(new Cylinder(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ), new ArrayList<>(
+                List.of()
+        ),
+                new Vector4f(0.855f, 0.647f, 0.125f, 1.0f),
+//                center
+                new Vector3f(0.0f, 0.0f, 0.0f),
+//                rad
+                new Vector3f(0.025f, 0.025f, 0.025f),
+                0.05f
+        ));
+
+        bomber.get(0).getChildObject().get(0).getChildObject().get(2).scaleObject(1.0f, 1.0f, 1.0f);
+        bomber.get(0).getChildObject().get(0).getChildObject().get(2).rotateObject((float)Math.toRadians(-90.0f), 1.0f, 0.0f, 0.0f);
+        bomber.get(0).getChildObject().get(0).getChildObject().get(2).translateObject(-0.1f, -0.27f, 0.0f);
+
+        //kaki kanan
+        bomber.get(0).getChildObject().get(0).getChildObject().add(new Cylinder(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ), new ArrayList<>(
+                List.of()
+        ),
+                new Vector4f(0.855f, 0.647f, 0.125f, 1.0f),
+//                center
+                new Vector3f(0.0f, 0.0f, 0.0f),
+//                rad
+                new Vector3f(0.025f, 0.025f, 0.025f),
+                0.05f
+        ));
+
+        bomber.get(0).getChildObject().get(0).getChildObject().get(3).scaleObject(1.0f, 1.0f, 1.0f);
+        bomber.get(0).getChildObject().get(0).getChildObject().get(3).rotateObject((float)Math.toRadians(-90.0f), 1.0f, 0.0f, 0.0f);
+        bomber.get(0).getChildObject().get(0).getChildObject().get(3).translateObject(0.1f, -0.27f, 0.0f);
+
+
+        // sepatu kanan
+
+        bomber.get(0).getChildObject().get(0).getChildObject().add(new halfSphere(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ), new ArrayList<>(
+                List.of()
+        ),
+                new Vector4f(0.855f, 0.647f, 0.125f, 1.0f),
+//                center
+                new Vector3f(0.0f, 0.0f, 0.0f),
+//                rad
+                new Vector3f(0.08f, 0.08f, 0.08f)
+        ));
+
+        bomber.get(0).getChildObject().get(0).getChildObject().get(4).scaleObject(0.08f, 0.1f, 0.1f);
+        bomber.get(0).getChildObject().get(0).getChildObject().get(4).rotateObject((float)Math.toRadians(-90.0f), 1.0f, 0.0f, 0.0f);
+        bomber.get(0).getChildObject().get(0).getChildObject().get(4).translateObject(0.1f, -0.36f, 0.0f);
+
+
+
+        // sepatu kiri
+
+        bomber.get(0).getChildObject().get(0).getChildObject().add(new halfSphere(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ), new ArrayList<>(
+                List.of()
+        ),
+                new Vector4f(0.855f, 0.647f, 0.125f, 1.0f),
+//                center
+                new Vector3f(0.0f, 0.0f, 0.0f),
+//                rad
+                new Vector3f(0.08f, 0.08f, 0.08f)
+        ));
+
+        bomber.get(0).getChildObject().get(0).getChildObject().get(5).scaleObject(0.08f, 0.1f, 0.1f);
+        bomber.get(0).getChildObject().get(0).getChildObject().get(5).rotateObject((float)Math.toRadians(-90.0f), 1.0f, 0.0f, 0.0f);
+        bomber.get(0).getChildObject().get(0).getChildObject().get(5).translateObject(-0.1f, -0.36f, 0.0f);
+
+
+
+        //bagian2 sepatu kiri
+        bomber.get(0).getChildObject().get(0).getChildObject().add(new halfSphere(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ), new ArrayList<>(
+                List.of()
+        ),
+                new Vector4f(0.855f, 0.647f, 0.125f, 1.0f),
+//                center
+                new Vector3f(0.0f, 0.0f, 0.0f),
+//                rad
+                new Vector3f(0.1f, 0.1f, 0.1f)
+        ));
+
+        bomber.get(0).getChildObject().get(0).getChildObject().get(6).scaleObject(0.08f, 0.1f, 0.1f);
+        bomber.get(0).getChildObject().get(0).getChildObject().get(6).rotateObject((float)Math.toRadians(-90.0f), 1.0f, 0.0f, 0.0f);
+        bomber.get(0).getChildObject().get(0).getChildObject().get(6).translateObject(-0.1f, -0.36f, 0.075f);
+
+        //bagian2 bagian kanan
+        bomber.get(0).getChildObject().get(0).getChildObject().add(new halfSphere(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ), new ArrayList<>(
+                List.of()
+        ),
+                new Vector4f(0.855f, 0.647f, 0.125f, 1.0f),
+//                center
+                new Vector3f(0.0f, 0.0f, 0.0f),
+//                rad
+                new Vector3f(0.1f, 0.1f, 0.1f)
+        ));
+
+        bomber.get(0).getChildObject().get(0).getChildObject().get(7).scaleObject(0.08f, 0.1f, 0.1f);
+        bomber.get(0).getChildObject().get(0).getChildObject().get(7).rotateObject((float)Math.toRadians(-90.0f), 1.0f, 0.0f, 0.0f);
+        bomber.get(0).getChildObject().get(0).getChildObject().get(7).translateObject(0.1f, -0.36f, 0.075f);
+
+
+        //bagian ekor
+        bomber.get(0).getChildObject().get(0).getChildObject().add(new Cylinder(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ), new ArrayList<>(
+                List.of()
+        ),
+                new Vector4f(0.855f, 0.647f, 0.125f, 1.0f),
+//                center
+                new Vector3f(0.0f, 0.0f, 0.0f),
+//                rad
+                new Vector3f(0.025f, 0.025f, 0.025f), 0.025f
+        ));
+
+        bomber.get(0).getChildObject().get(0).getChildObject().get(8).scaleObject(1.0f, 1.0f, 1.0f);
+        bomber.get(0).getChildObject().get(0).getChildObject().get(8).rotateObject((float)Math.toRadians(0.0f), 1.0f, 0.0f, 0.0f);
+        bomber.get(0).getChildObject().get(0).getChildObject().get(8).translateObject(0.0f, 0.0f, -0.27f);
+
+        //ekor atas
+        bomber.get(0).getChildObject().get(0).getChildObject().add(new Pipe(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ), new ArrayList<>(
+                List.of()
+        ),
+                new Vector4f(0.8f, 0.6f, 0.3f, 1.0f),
+                new Vector3f(0.0f,0.0f,0.0f),
+                new Vector3f(0.5f,0.5f,0.5f),0.1f,0.3f,360
+
+        ));
+
+        bomber.get(0).getChildObject().get(0).getChildObject().get(9).scaleObject(0.1f, 0.1f, 0.1f);
+        bomber.get(0).getChildObject().get(0).getChildObject().get(9).rotateObject((float)Math.toRadians(90.0f), 0.0f, 1.0f, 0.0f);
+        bomber.get(0).getChildObject().get(0).getChildObject().get(9).translateObject(0.0f, 0.065f, -0.3f);
+
+        //ekor bawah
+        bomber.get(0).getChildObject().get(0).getChildObject().add(new Pipe(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ), new ArrayList<>(
+                List.of()
+        ),
+                new Vector4f(0.8f, 0.6f, 0.3f, 1.0f),
+                new Vector3f(0.0f,0.0f,0.0f),
+                new Vector3f(0.5f,0.5f,0.5f),0.1f,0.3f,360
+
+        ));
+
+        bomber.get(0).getChildObject().get(0).getChildObject().get(10).scaleObject(0.1f, 0.1f, 0.1f);
+        bomber.get(0).getChildObject().get(0).getChildObject().get(10).rotateObject((float)Math.toRadians(90.0f), 0.0f, 1.0f, 0.0f);
+        bomber.get(0).getChildObject().get(0).getChildObject().get(10).translateObject(0.0f, -0.065f, -0.3f);
+
+        //ekor bagian setengah lingkaran
+        bomber.get(0).getChildObject().get(0).getChildObject().add(new ElipticParaboloid(
+                Arrays.asList(
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                ), new ArrayList<>(
+                List.of()
+        ),
+                new Vector4f(0.855f, 0.647f, 0.125f, 1.0f),
+//                center
+                new Vector3f(0.0f, 0.0f, 0.0f),
+//                rad
+                new Vector3f(0.068f, 0.068f, 0.068f)
+        ));
+
+        bomber.get(0).getChildObject().get(0).getChildObject().get(11).scaleObject(0.4f, 0.4f, 0.4f);
+        bomber.get(0).getChildObject().get(0).getChildObject().get(11).rotateObject((float)Math.toRadians(180.0f), 0.0f, 1.0f, 0.0f);
+        bomber.get(0).getChildObject().get(0).getChildObject().get(11).translateObject(0.0f, 0.0f, -0.291f);
     }
 
     public void init(){
@@ -567,6 +880,7 @@ public class project_uts {
         camera.setPosition(-0.5f,0.0f, 5.0f);
         camera.setRotation((float) Math.toRadians(0.0f),(float) Math.toRadians(30.0f));
         babayaga();
+        bomb();
 
     }
 
@@ -608,6 +922,7 @@ public class project_uts {
 //    end masukin class bezier
 
     public void input(){
+
 
 //        ROTATING OBJECT
         if(window.isKeyPressed(GLFW_KEY_D)){
@@ -702,7 +1017,7 @@ public class project_uts {
     public void loop(){
         while (window.isOpen()){
             window.update();
-            glClearColor(0.0f,0.0f,0.0f,1.0f);
+            glClearColor(0.0f, 0.5f, 0.5f, 1.0f);
             GL.createCapabilities();
             input();
 //            write your code here
@@ -723,6 +1038,12 @@ public class project_uts {
                 object.drawIndices(camera, projection);
             }
 
+            for (Object object: bomber){
+                object.draw(camera, projection);
+                object.drawIndices(camera, projection);
+            }
+
+
             //  curve
 //            objectsPoinControl.get(1).drawLine(camera, projection);
 //            objectsPoinControl.get(3).drawLine(camera, projection);
@@ -737,6 +1058,9 @@ public class project_uts {
 //            restore state
             glDisableVertexAttribArray(0);
             glfwPollEvents();
+
+
+
 
         }
     }

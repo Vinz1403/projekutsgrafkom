@@ -1010,6 +1010,60 @@ public class project_uts {
         if(window.isKeyPressed(GLFW_KEY_N)){objects.get(0).scaleObject(0.8f,0.8f,0.8f);}
 //        END SCALING
 
+
+        //        SCALING OBJECT  BOMBER
+//        MAGNIFY
+        if(window.isKeyPressed(GLFW_KEY_B)){bomber.get(0).scaleObject(1.1f,1.1f,1.1f);}
+//        REVERSE MAGNIFY
+        if(window.isKeyPressed(GLFW_KEY_V)){bomber.get(0).scaleObject(0.8f,0.8f,0.8f);}
+//        END SCALING
+
+        //        ROTATING OBJECT BOMBER
+        if(window.isKeyPressed(GLFW_KEY_L)){
+//            Y_RIGHT
+            Vector3f mainbody = new Vector3f(bomber.get(0).model.transformPosition(new Vector3f(0.0f,0.0f,0.0f)));
+            bomber.get(0).translateObject(-mainbody.x, -mainbody.y, -mainbody.z);
+            bomber.get(0).rotateObject((float)Math.toRadians(1.5f),0.0f,1.0f,0.0f);
+            bomber.get(0).translateObject(mainbody.x,mainbody.y, mainbody.z);
+
+        }
+        if(window.isKeyPressed(GLFW_KEY_J)){
+//            Y_LEFT
+            Vector3f mainbody = new Vector3f(bomber.get(0).model.transformPosition(new Vector3f(0.0f,0.0f,0.0f)));
+            bomber.get(0).translateObject(-mainbody.x, -mainbody.y, -mainbody.z);
+            bomber.get(0).rotateObject((float)Math.toRadians(1.5f),0.0f,-1.0f,0.0f);
+            bomber.get(0).translateObject(mainbody.x,mainbody.y, mainbody.z);
+        }
+        if(window.isKeyPressed(GLFW_KEY_K)){
+//            X_UP
+            Vector3f mainbody = new Vector3f(bomber.get(0).model.transformPosition(new Vector3f(0.0f,0.0f,0.0f)));
+            bomber.get(0).translateObject(-mainbody.x, -mainbody.y, -mainbody.z);
+            bomber.get(0).rotateObject((float)Math.toRadians(1.5f),1.0f,0.0f,0.0f);
+            bomber.get(0).translateObject(mainbody.x,mainbody.y, mainbody.z);
+        }
+        if(window.isKeyPressed(GLFW_KEY_I)){
+//            X_DOWN
+            Vector3f mainbody = new Vector3f(bomber.get(0).model.transformPosition(new Vector3f(0.0f,0.0f,0.0f)));
+            bomber.get(0).translateObject(-mainbody.x, -mainbody.y, -mainbody.z);
+            bomber.get(0).rotateObject((float)Math.toRadians(1.5f),-1.0f,0.0f,0.0f);
+            bomber.get(0).translateObject(mainbody.x,mainbody.y, mainbody.z);
+        }
+        if(window.isKeyPressed(GLFW_KEY_U)){
+//            Z_POS
+            Vector3f mainbody = new Vector3f(bomber.get(0).model.transformPosition(new Vector3f(0.0f,0.0f,0.0f)));
+            bomber.get(0).translateObject(-mainbody.x, -mainbody.y, -mainbody.z);
+            bomber.get(0).rotateObject((float)Math.toRadians(1.5f),0.0f,0.0f,1.0f);
+            bomber.get(0).translateObject(mainbody.x,mainbody.y, mainbody.z);
+        }
+        if(window.isKeyPressed(GLFW_KEY_Y)){
+//            Z_NEG
+            Vector3f mainbody = new Vector3f(bomber.get(0).model.transformPosition(new Vector3f(0.0f,0.0f,0.0f)));
+            bomber.get(0).translateObject(-mainbody.x, -mainbody.y, -mainbody.z);
+            bomber.get(0).rotateObject((float)Math.toRadians(1.5f),0.0f,0.0f,-1.0f);
+            bomber.get(0).translateObject(mainbody.x,mainbody.y, mainbody.z);
+        }
+//      END ROTATING OBJECT
+
     }
 //end tulul
 
